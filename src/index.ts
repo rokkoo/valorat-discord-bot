@@ -1,5 +1,11 @@
 require("dotenv").config();
 
-import "./discordClient";
+import discordClient from "./discordClient";
 
-console.log("client");
+import { createInteraction, ready } from "./listeners";
+
+ready(discordClient);
+createInteraction(discordClient);
+
+// Loging to discord
+discordClient.login(process.env.DISCORD_TOKEN);

@@ -1,11 +1,10 @@
 import { Client } from "discord.js";
+import { ready } from "./listeners";
 
 console.log("Bot is starting...");
 
 const discordClient = new Client({
   intents: [],
 });
-
-console.log({ discordClient });
 
 export default discordClient;
