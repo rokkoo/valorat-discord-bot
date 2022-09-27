@@ -1,6 +1,6 @@
-# Foobar
+# Valorat-discord-bot
 
-Foobar is a Python library for dealing with word pluralization.
+Valorat-discord-bot is a bot that by passing a `username#tag` will return some data about this user
 
 ## Installation
 
