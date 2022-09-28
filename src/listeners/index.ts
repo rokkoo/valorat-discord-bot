@@ -1,5 +1,5 @@
 import { Client, CommandInteraction, Interaction } from 'discord.js';
-import { Commands } from '../commands';
+import { Commands } from '../slashCommands';
 
 export const ready = (client: Client) => {
   client.on('ready', async () => {
