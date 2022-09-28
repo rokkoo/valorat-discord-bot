@@ -18,7 +18,24 @@ npm start
 
 Remember to add a valid token on the `.env` file `DISCORD_TOKEN`
 
-### Register a command
+### Register a commdan `!hello <args>`
+
+```typescript
+// create the command commands/index.ts
+const helloCommand: Command = {
+  command: 'hello',
+  action(message, args) {
+    console.log('message from helloCommand', args);
+
+    message.reply(`args -> ${args.toString()}`);
+  },
+};
+
+// Add the command to the list
+const commands: Command[] = [helloCommand];
+```
+
+### Register a slash command `/hello`
 
 ```typescript
 // create the command
