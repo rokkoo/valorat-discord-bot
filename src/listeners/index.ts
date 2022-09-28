@@ -1,4 +1,5 @@
 import { Client, CommandInteraction, Interaction } from 'discord.js';
+import { handleCommand } from '../commands';
 import { Commands } from '../slashCommands';
 
 export const ready = (client: Client) => {
@@ -20,10 +21,10 @@ export const createInteraction = (client: Client) => {
       await handleSlashCommand(client, interaction);
     }
   });
+};
 
-  client.on('messageCreate', async (message) => {
-    console.log({ message });
-  });
+export const createCommand = (client: Client) => {
+  client.on('messageCreate', handleCommand);
 };
 
 /**
