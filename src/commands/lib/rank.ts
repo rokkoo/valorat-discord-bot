@@ -16,8 +16,6 @@ export const getPlayerRank = async (name: string, tag: string) => {
     return "Provide a username and tag! (Fulanin#EUW)";
   }
 
-  console.log(Settings.BASE_URL);
-  
   const response = await axios.get(
     `${Settings.BASE_URL}/mmr/eu/${name}/${tag}`
   );
