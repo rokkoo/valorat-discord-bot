@@ -1,9 +1,9 @@
-import { Client, CommandInteraction, Interaction } from 'discord.js';
-import { handleCommand } from '../commands';
-import { Commands } from '../slashCommands';
+import { Client, CommandInteraction, Interaction } from "discord.js";
+import { handleCommand } from "../commands";
+import { Commands } from "../slashCommands";
 
 export const ready = (client: Client) => {
-  client.on('ready', async () => {
+  client.on("ready", async () => {
     if (!client.user || !client.application) {
       return;
     }
@@ -16,7 +16,7 @@ export const ready = (client: Client) => {
 };
 
 export const createInteraction = (client: Client) => {
-  client.on('interactionCreate', async (interaction: Interaction) => {
+  client.on("interactionCreate", async (interaction: Interaction) => {
     if (interaction.isCommand() || interaction.isContextMenuCommand()) {
       await handleSlashCommand(client, interaction);
     }
@@ -24,7 +24,7 @@ export const createInteraction = (client: Client) => {
 };
 
 export const createCommand = (client: Client) => {
-  client.on('messageCreate', handleCommand);
+  client.on("messageCreate", handleCommand);
 };
 
 /**
@@ -40,7 +40,7 @@ export const handleSlashCommand = async (
 
   if (!validSlashCommandName) {
     return interaction.followUp({
-      content: 'This is not a valid command',
+      content: "This is not a valid command",
     });
   }
 
