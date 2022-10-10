@@ -16,25 +16,33 @@ export const getPlayerRank = async (name: string, tag: string) => {
     return "Provide a username and tag! (Fulanin#EUW)";
   }
 
-  const response = await axios.get(
-    `${Settings.BASE_URL}/mmr/eu/${name}/${tag}`
-  );
+  try {
+    const response = await axios.get(
+      `${Settings.BASE_URL}/mmr/eu/${name}/${tag}`
+    );
 
-  if (response.status === 200) {
-    const {
-      data: {
-        data: { currenttierpatched, elo },
-      },
-    } = response;
+    if (response.status === 200) {
+      const {
+        data: {
+          data: { currenttierpatched, elo },
+        },
+      } = response;
 
-    if (!currenttierpatched && !elo) {
-      return `${decodeURI(name)}#${tag} doesn't have MMR stats at this moment.`;
+      if (!currenttierpatched && !elo) {
+        return `${decodeURI(
+          name
+        )}#${tag} doesn't have MMR stats at this moment.`;
+      }
+
+      return `${decodeURI(
+        name
+      )}#${tag}'s current tier is ${currenttierpatched}, ELO: ${elo}.`;
+    } else {
+      return `Oops something went wrong!`;
     }
+  } catch (error) {
+    console.log({ error });
 
-    return `${decodeURI(
-      name
-    )}#${tag}'s current tier is ${currenttierpatched}, ELO: ${elo}.`;
-  } else {
     return `Oops something went wrong!`;
   }
 };

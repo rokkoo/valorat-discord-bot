@@ -37,9 +37,7 @@ export const handleCommand = (message: Message) => {
   const [fullCommand, ...args] = message.content.split(" ");
   const [exclamation, command] = fullCommand.split("!"); // get the command
 
-  console.log({ exclamation });
-
-  if (exclamation !== "!") {
+  if (typeof exclamation !== "string") {
     message.reply(`Please writte a valid command`);
 
     return;
